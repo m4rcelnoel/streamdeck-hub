@@ -1,0 +1,261 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark theme (default) */
+    --color-bg-primary: #0f172a;
+    --color-bg-secondary: #1e293b;
+    --color-bg-tertiary: #334155;
+    --color-border: #334155;
+    --color-border-light: #475569;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #cbd5e1;
+    --color-text-tertiary: #94a3b8;
+    --color-text-muted: #64748b;
+  }
+
+  .light {
+    --color-bg-primary: #f8fafc;
+    --color-bg-secondary: #ffffff;
+    --color-bg-tertiary: #f1f5f9;
+    --color-border: #e2e8f0;
+    --color-border-light: #cbd5e1;
+    --color-text-primary: #0f172a;
+    --color-text-secondary: #334155;
+    --color-text-tertiary: #475569;
+    --color-text-muted: #64748b;
+  }
+
+  body {
+    @apply antialiased transition-colors duration-200;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white;
+  }
+
+  .btn-secondary {
+    background-color: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+    @apply hover:opacity-80;
+  }
+
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-700 text-white;
+  }
+
+  .card {
+    background-color: var(--color-bg-secondary);
+    border-color: var(--color-border);
+    @apply rounded-xl p-4 border;
+  }
+
+  .input {
+    background-color: var(--color-bg-tertiary);
+    border-color: var(--color-border);
+    color: var(--color-text-primary);
+    @apply w-full px-3 py-2 rounded-lg border
+           placeholder-dark-400
+           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+  }
+
+  .light .input {
+    @apply placeholder-dark-500;
+  }
+
+  .label {
+    color: var(--color-text-secondary);
+    @apply block text-sm font-medium mb-1;
+  }
+
+  /* Theme-aware text colors */
+  .text-theme-primary {
+    color: var(--color-text-primary);
+  }
+
+  .text-theme-secondary {
+    color: var(--color-text-secondary);
+  }
+
+  .text-theme-tertiary {
+    color: var(--color-text-tertiary);
+  }
+
+  .text-theme-muted {
+    color: var(--color-text-muted);
+  }
+
+  /* Theme-aware backgrounds */
+  .bg-theme-primary {
+    background-color: var(--color-bg-primary);
+  }
+
+  .bg-theme-secondary {
+    background-color: var(--color-bg-secondary);
+  }
+
+  .bg-theme-tertiary {
+    background-color: var(--color-bg-tertiary);
+  }
+
+  /* Preview mode button press animation */
+  .button-pressed {
+    transform: scale(0.92);
+    filter: brightness(0.8);
+  }
+
+  .button-pressing {
+    animation: buttonPress 0.2s ease-out;
+  }
+
+  @keyframes buttonPress {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.92);
+      filter: brightness(0.8);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /* Button animations */
+  .anim-pulse {
+    animation: animPulse var(--anim-duration, 2s) ease-in-out infinite;
+  }
+
+  .anim-flash {
+    animation: animFlash var(--anim-duration, 1s) ease-in-out infinite;
+  }
+
+  .anim-glow {
+    animation: animGlow var(--anim-duration, 2s) ease-in-out infinite;
+  }
+
+  .anim-color-cycle {
+    animation: animColorCycle var(--anim-duration, 4s) linear infinite;
+  }
+
+  .anim-bounce {
+    animation: animBounce var(--anim-duration, 1s) ease-in-out infinite;
+  }
+
+  .anim-shake {
+    animation: animShake var(--anim-duration, 0.5s) ease-in-out infinite;
+  }
+
+  .anim-breathe {
+    animation: animBreathe var(--anim-duration, 3s) ease-in-out infinite;
+  }
+
+  .anim-spin {
+    animation: animSpin var(--anim-duration, 2s) linear infinite;
+  }
+
+  /* Animation speed modifiers */
+  .anim-slow {
+    --anim-duration: 3s;
+  }
+
+  .anim-normal {
+    --anim-duration: 1.5s;
+  }
+
+  .anim-fast {
+    --anim-duration: 0.75s;
+  }
+
+  @keyframes animPulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.85;
+    }
+  }
+
+  @keyframes animFlash {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+  }
+
+  @keyframes animGlow {
+    0%, 100% {
+      box-shadow: 0 0 5px var(--glow-color, rgba(124, 58, 237, 0.5)),
+                  0 0 10px var(--glow-color, rgba(124, 58, 237, 0.3));
+    }
+    50% {
+      box-shadow: 0 0 15px var(--glow-color, rgba(124, 58, 237, 0.8)),
+                  0 0 25px var(--glow-color, rgba(124, 58, 237, 0.5)),
+                  0 0 35px var(--glow-color, rgba(124, 58, 237, 0.3));
+    }
+  }
+
+  @keyframes animColorCycle {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  @keyframes animBounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  @keyframes animShake {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-2px);
+    }
+    75% {
+      transform: translateX(2px);
+    }
+  }
+
+  @keyframes animBreathe {
+    0%, 100% {
+      transform: scale(1);
+      filter: brightness(1);
+    }
+    50% {
+      transform: scale(1.02);
+      filter: brightness(1.15);
+    }
+  }
+
+  @keyframes animSpin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

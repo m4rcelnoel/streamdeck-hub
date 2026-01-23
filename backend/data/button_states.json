@@ -1,0 +1,25 @@
+{
+  "counters": {
+    "0f72ed9b-53de-4ee4-966a-107f86cbc005:9:0": {
+      "value": 30,
+      "step": 1,
+      "min_val": null,
+      "max_val": null
+    },
+    "0f72ed9b-53de-4ee4-966a-107f86cbc005:11:0": {
+      "value": 23,
+      "step": 1,
+      "min_val": null,
+      "max_val": null
+    }
+  },
+  "timers": {
+    "0f72ed9b-53de-4ee4-966a-107f86cbc005:6:0": {
+      "is_countdown": true,
+      "duration_ms": 300000,
+      "elapsed_before_pause": 6891,
+      "is_running": false,
+      "start_time": null
+    }
+  }
+}
